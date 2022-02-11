@@ -37,6 +37,20 @@ public class ProdSerImpl implements ProdService {
     @Override
     @Transactional
     public Producto save(Producto producto) {
+        float precio=producto.getPrecio();
+        int cantidad=producto.getCantidad();
+        float subtotal1=precio*cantidad;
+        Double total=0.0;
+        if(total>50) {
+            Double descuento=subtotal1*0.10;
+            Double iva=subtotal1*0.12;
+            total=(subtotal1-descuento+iva);
+        }else {
+            Double iva=subtotal1*0.12;
+            total=(subtotal1+iva);
+        }
+        producto.setTotal(total);
+
         return prodRepo.save(producto);
     }
 

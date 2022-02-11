@@ -21,6 +21,11 @@ public class Producto implements Serializable {
     @Column
     private int cantidad;
 
+
+
+    @Column
+    private Double total;
+
     public Producto() {
     }
 
@@ -54,6 +59,14 @@ public class Producto implements Serializable {
 
     public int getCantidad() {
         return cantidad;
+    }
+
+    public Double getTotal() {
+        return total;
+    }
+
+    public void setTotal(Double total) {
+        this.total = total;
     }
 
     public void setCantidad(int cantidad) {
